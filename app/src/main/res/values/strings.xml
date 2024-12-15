@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TuneTown</string>
+    <string name="continue_with_google">Continue With Google</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="swipe_between_pages_to_view_content">Swipe between pages to view content</string>
+</resources>

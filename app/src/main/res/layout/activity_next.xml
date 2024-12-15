@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".NextActivity">
+
+    <TextView
+        android:layout_width="318dp"
+        android:layout_height="133dp"
+        android:layout_centerHorizontal="true"
+        android:text="Welcome To  TuneTown"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/done"/>
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:text="name"
+        android:textColor="@color/white"
+        android:textSize="34sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/email"
+        android:text="email"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/name"
+        android:textSize="24sp"/>
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="match_parent"
+       android:orientation="horizontal"
+       android:layout_marginTop="90dp">
+       <Button
+           android:id="@+id/signout"
+           android:layout_width="139dp"
+           android:layout_height="55dp"
+           android:layout_alignParentStart="true"
+           android:layout_alignParentBottom="true"
+           android:layout_marginStart="56dp"
+           android:layout_marginEnd="49dp"
+           android:layout_marginBottom="27dp"
+           android:layout_toStartOf="@+id/cbtn"
+           android:background="@drawable/btn1"
+           android:padding="10dp"
+           android:text="Sign out"
+           android:textColor="@color/black"
+           android:textSize="18sp" />
+
+       <Button
+           android:id="@+id/cbtn"
+           android:layout_width="139dp"
+           android:layout_height="55dp"
+           android:layout_alignParentEnd="true"
+           android:layout_alignParentBottom="true"
+           android:layout_marginEnd="40dp"
+           android:layout_marginBottom="27dp"
+           android:background="@drawable/btn1"
+           android:padding="13dp"
+           android:text="continue"
+           android:textColor="@color/black"
+           android:textSize="18sp" />
+   </LinearLayout>
+    <FrameLayout
+        android:id="@+id/frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>
