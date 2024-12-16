@@ -18,14 +18,14 @@ import androidx.fragment.app.Fragment;
 public class musicFragment extends Fragment {
 
     private MediaPlayer mediaPlayer;
-    private int currentSong = 0;// Index of the current song
+    private int currentSong = 0;
     private final int[] songs = {
             R.raw.dyw,R.raw.khajrare, R.raw.kushi, R.raw.nyc, R.raw.heyhu,
             R.raw.just, R.raw.snow, R.raw.saka, R.raw.peelings, R.raw.tyb
     };
     private final String[] songTitles = {
-            "Don't you want me", "khajra re", "Kushi Kalthumbide", "New York City", "Hey Hu",
-            "Just math mathalli", "Snow", "Saka saka", "Peeling (Pushpa2)", "Take your Breath away"
+            "Don't you want me..", "Khajra re..", "Kushi Kalthumbide..", "New York City..", "Hey Hu..",
+            "Just math mathalli..", "Snow..", "Saka saka..", "Peeling (Pushpa2)..", "Take your Breath away.."
     };
 
     private  final int[] SongsImg={
@@ -48,13 +48,7 @@ public class musicFragment extends Fragment {
         ImageView Pause = view.findViewById(R.id.image_pause);
 
 
-
-
         updateSong();
-
-        Forward.setOnClickListener(v -> playSong(1));
-        Backward.setOnClickListener(v -> playSong(-1));
-
         Forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +79,6 @@ public class musicFragment extends Fragment {
             }
         });
 
-        // Pause button logic
         Pause.setOnClickListener(v -> {
             if (mediaPlayer != null && mediaPlayer.isPlaying()) {
                 mediaPlayer.pause();
@@ -96,38 +89,36 @@ public class musicFragment extends Fragment {
     }
 
     private void playSong(int direction) {
-        // Stop and release the current song
         if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.release();
         }
 
-        // Update the current song index
         currentSong = (currentSong + direction + songs.length) % songs.length;
-
-        // Update MediaPlayer and UI
         updateSong();
     }
 
     private void updateSong() {
-        // Initialize MediaPlayer with the current song
+
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+        }
+
         mediaPlayer = MediaPlayer.create(requireContext(), songs[currentSong]);
-        songTitleView.setText(songTitles[currentSong]);// Display the song title
+        songTitleView.setText(songTitles[currentSong]);
         SongsImgView.setImageResource(SongsImg[currentSong]);
+        mediaPlayer.setOnCompletionListener(mp -> playSong(1));
+
         mediaPlayer.start();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // Release MediaPlayer resources
         if (mediaPlayer != null) {
             mediaPlayer.release();
             mediaPlayer = null;
         }
     }
-//
-//    public int[] getImg() {
-//        return img;
-//    }
+
 }

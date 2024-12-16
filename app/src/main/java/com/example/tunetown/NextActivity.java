@@ -37,8 +37,9 @@ public class NextActivity extends AppCompatActivity {
 
         cbtn.setOnClickListener(view -> {
             Intent in = new Intent(NextActivity.this,HomePage.class);
-            startActivity(in);
             openFragment();
+            startActivity(in);
+
         });
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();

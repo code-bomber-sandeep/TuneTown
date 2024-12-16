@@ -14,7 +14,7 @@ import android.os.Handler;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
-    private static final int SPLASH_SCREEN_DELAY = 1000;
+    private static final int SPLASH_SCREEN_DELAY = 1000;//we use delay of 1s
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
             new Handler().postDelayed(() -> {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish(); // Close the splash screen so it doesn't remain in the back stack
+                finish();
             }, SPLASH_SCREEN_DELAY);
 
             return insets;
