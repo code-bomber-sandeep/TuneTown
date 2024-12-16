@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -23,7 +25,7 @@ public class musicFragment extends Fragment {
     };
     private final String[] songTitles = {
             "Don't you want me", "khajra re", "Kushi Kalthumbide", "New York City", "Hey Hu",
-            "Just matha mathalli", "Snow", "Saka saka", "Peeling (Pushpa2)", "Take your Breath away"
+            "Just math mathalli", "Snow", "Saka saka", "Peeling (Pushpa2)", "Take your Breath away"
     };
 
     private  final int[] SongsImg={
@@ -40,26 +42,51 @@ public class musicFragment extends Fragment {
 
         songTitleView = view.findViewById(R.id.song_title);
         SongsImgView = view.findViewById(R.id.gifImageView);
-        ImageView imageForward = view.findViewById(R.id.image_forward);
-        ImageView imageBackward = view.findViewById(R.id.image_backward);
-        ImageView imagePlay = view.findViewById(R.id.image_play);
-        ImageView imagePause = view.findViewById(R.id.image_pause);
+        ImageView Forward = view.findViewById(R.id.image_forward);
+        ImageView Backward = view.findViewById(R.id.image_backward);
+        ImageView Play = view.findViewById(R.id.image_play);
+        ImageView Pause = view.findViewById(R.id.image_pause);
+
+
 
 
         updateSong();
 
-        imageForward.setOnClickListener(v -> playSong(1));
-        imageBackward.setOnClickListener(v -> playSong(-1));
+        Forward.setOnClickListener(v -> playSong(1));
+        Backward.setOnClickListener(v -> playSong(-1));
+
+        Forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation ani = AnimationUtils.loadAnimation(requireContext(), R.anim.fade);
+                SongsImgView.startAnimation(ani);
+                songTitleView.startAnimation(ani);
+                playSong(1);
+            }
+        });
+
+        Backward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Animation ani = AnimationUtils.loadAnimation(requireContext(), R.anim.fade);
+                SongsImgView.startAnimation(ani);
+                songTitleView.startAnimation(ani);
+                playSong(-1);
+            }
+        });
 
 
-        imagePlay.setOnClickListener(v -> {
+
+
+
+        Play.setOnClickListener(v -> {
             if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
                 mediaPlayer.start();
             }
         });
 
         // Pause button logic
-        imagePause.setOnClickListener(v -> {
+        Pause.setOnClickListener(v -> {
             if (mediaPlayer != null && mediaPlayer.isPlaying()) {
                 mediaPlayer.pause();
             }
